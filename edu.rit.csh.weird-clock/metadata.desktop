@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Weird Clock
+Comment=A Weird Clock
+
+Type=Service
+Icon=plasma
+X-KDE-ServiceTypes=Plasma/Wallpaper
+
+X-KDE-PluginInfo-Author=Ethan Ferguson
+X-KDE-PluginInfo-Email=ethanf108@csh.rit.edu
+X-KDE-PluginInfo-Name=edu.rit.csh.weird-clock-kde
+X-KDE-PluginInfo-License=LGPLv2+
+X-KDE-PluginInfo-Version=0.1
+X-Plasma-MainScript=ui/main.qml
