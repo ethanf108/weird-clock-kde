@@ -12,7 +12,8 @@ Rectangle {
 
 	property var hours: shuffle([0,1,2,3,4,5,6,7,8,9,10,11])
 	property var square: wallpaper.configuration.Layout === 1
-	
+	property var continuous: wallpaper.configuration.TickSpeed === 0
+
 	function shuffle(list) {
 	    list.sort((a,b) => 0.5 - Math.random());
 	    return list;
@@ -68,8 +69,23 @@ Rectangle {
 	    drawLine(ctx, Math.PI * (startMinute + (((endMinute - startMinute + 12) % 12) * ((minute % 5) / 5))) / 6, 0.7);
 	    
 	    drawLine(ctx, Math.PI * (startHour + (minute / 60) * ((endHour - startHour + 12) % 12)) / 6, 0.5);
-	    
-	    requestAnimationFrame(paint);
+
+	    if (continuous) {
+		requestAnimationFrame(paint);
+	    }
+	}
+
+	function repaint() {
+	    if (!continuous) {
+		requestPaint();
+	    }
+	}
+
+	Timer {
+	    running: true
+	    repeat: true
+	    interval: 1000
+	    onTriggered: canvas.repaint()
 	}
     }
 }

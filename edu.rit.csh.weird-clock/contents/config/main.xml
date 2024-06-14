@@ -23,5 +23,18 @@
       </choices>
       <default>0</default>
     </entry>
+
+    <entry name="TickSpeed" type="Enum">
+      <label>Tick Speed</label>
+      <choices>
+	<choice name="Continuous">
+	  <label>Continuous (try my best)</label>
+	</choice>
+	<choice name="Second">
+	  <label>Tick per Second</label>
+	</choice>
+      </choices>
+      <default>0</default>
+    </entry>
   </group>
 </kcfg>

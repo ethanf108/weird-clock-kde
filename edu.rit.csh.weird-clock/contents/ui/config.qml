@@ -9,6 +9,7 @@ Kirigami.FormLayout {
 
     property alias cfg_BGColor: bgColorPicker.color
     property alias cfg_Layout: layoutSelect.currentIndex
+    property alias cfg_TickSpeed: tickSelect.currentIndex
     property alias formLayout: root
 
     KQuickControls.ColorButton {
@@ -21,5 +22,11 @@ Kirigami.FormLayout {
 	id: layoutSelect
 	model: ["Fit to Screen", "Square"]
 	Kirigami.FormData.label: "Layout:"
+    }
+
+    ComboBox {
+	id: tickSelect
+	model: ["Continuous (Try my Best)", "Tick per Second"]
+	Kirigami.FormData.label: "Tick Speed:"
     }
 }
