@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+  <kcfgfile name=""/>
+
+  <group name="Customization">
+    <entry name="BGColor" type="Color">
+      <label>Background Color</label>
+      <default>#00ffff</default>
+    </entry>
+
+    <entry name="Layout" type="Enum">
+      <label>Layout</label>
+      <choices>
+	<choice name="Fit">
+	  <label>Fit to Screen</label>
+	</choice>
+	<choice name="Square">
+	  <label>Square</label>
+	</choice>
+      </choices>
+      <default>0</default>
+    </entry>
+  </group>
+</kcfg>

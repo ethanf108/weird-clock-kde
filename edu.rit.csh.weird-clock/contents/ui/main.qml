@@ -3,40 +3,47 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 Rectangle {
     id: root
-    color: Qt.rgba(0,1,1,1)
-    
+    color: wallpaper.configuration.BGColor
+
     Canvas {
 	id: canvas
 	width: root.width
 	height: root.height
-	
+
 	property var hours: shuffle([0,1,2,3,4,5,6,7,8,9,10,11])
+	property var square: wallpaper.configuration.Layout === 1
 	
 	function shuffle(list) {
 	    list.sort((a,b) => 0.5 - Math.random());
 	    return list;
 	}
-	
+
 	function drawLine(ctx, angle, len) {
+	    const dx = square ? Math.min(width, height) : width;
+	    const dy = square ? Math.min(width, height) : height;
+
 	    ctx.beginPath();
 	    ctx.moveTo(width / 2, height / 2);
-	    ctx.lineTo((width / 2) + (len * Math.cos(angle) * (width / 2)),
-		       (height / 2) + (len * Math.sin(angle) * (height / 2)));
+	    ctx.lineTo((width / 2) + (len * Math.cos(angle) * (dx / 2)),
+		       (height / 2) + (len * Math.sin(angle) * (dy / 2)));
 	    ctx.stroke();
 	}
-	
-	function drawNums(ctx) {	    
+
+	function drawNums(ctx) {
+	    const dx = square ? Math.min(width, height) : width;
+	    const dy = square ? Math.min(width, height) : height;
+
 	    for (let i = 0; i < hours.length; i++) {
 		ctx.fillText(hours[i] + 1,
-			     (width / 2) + (0.8 * Math.cos(Math.PI * i / 6) * (width / 2)),
-			     (height / 2) + (0.8 * Math.sin(Math.PI * i / 6) * (height / 2)));
+			     (width / 2) + (0.8 * Math.cos(Math.PI * i / 6) * (dx / 2)),
+			     (height / 2) + (0.8 * Math.sin(Math.PI * i / 6) * (dy / 2)));
 	    }
 	}
-	
+
 	onPaint: {
 	    const ctx = getContext("2d");
 	    
-	    ctx.fillStyle = Qt.rgba(0,1,1,1);
+	    ctx.fillStyle = wallpaper.configuration.BGColor;
 	    ctx.fillRect(0,0,width,height);
 	    
 	    ctx.fillStyle = Qt.rgba(0,0,0,1);
